@@ -28,5 +28,6 @@ class github_runner::service {
 
     default: {
       notify { "Unknown 'ensure' value: ${github_runner::ensure}": }
+    }
   }
 }
