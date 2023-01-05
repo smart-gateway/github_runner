@@ -19,6 +19,7 @@ class github_runner(
   contain github_runner::config
   contain github_runner::service
 
+  # Ensure execution ordering
   anchor { '::github_runner::begin': }
   -> Class['::github_runner::install']
   -> Class['::github_runner::config']
