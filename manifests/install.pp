@@ -24,7 +24,7 @@ class github_runner::install {
       }
 
       # Extract the runner
-      exec { 'extract the github actions runner':
+      ->exec { 'extract the github actions runner':
         command => "tar xzf ${::github_runner::runner_dir}/actions-runner-linux-x64-${::github_runner::runner_version}.tar.gz -C ${::github_runner::runner_dir}",
         path    => $::github_runner::path,
         onlyif  => "echo '${::github_runner::runner_archive_hash} ${::github_runner::runner_dir}/actions-runner-linux-x64-${::github_runner::runner_version}.tar.gz' | shasum -a 256 -c",
@@ -32,7 +32,7 @@ class github_runner::install {
       }
 
       # Configure the runner
-      exec { 'configure the github actions runner':
+      ->exec { 'configure the github actions runner':
         command  => "/opt/actions-runner/config.sh --url ${::github_runner::runner_url} --token ${::github_runner::runner_token} --unattended",
         path     => $::github_runner::path,
         provider => shell,
