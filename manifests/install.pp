@@ -28,7 +28,6 @@ class github_runner::install {
       ->exec { 'extract the github actions runner':
         command => "tar xzf ${::github_runner::runner_dir}/actions-runner-linux-x64-${::github_runner::runner_version}.tar.gz -C ${::github_runner::runner_dir}",
         path    => $::github_runner::path,
-        onlyif  => "echo '${::github_runner::runner_archive_hash} ${::github_runner::runner_dir}/actions-runner-linux-x64-${::github_runner::runner_version}.tar.gz' | shasum -a 256 -c",
         unless  => "test -f ${::github_runner::runner_dir}/.runner",
       }
 
