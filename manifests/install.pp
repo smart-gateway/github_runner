@@ -23,7 +23,6 @@ class github_runner::install {
         unless  => "test -f ${::github_runner::runner_dir}/.runner",
       }
 
-      Notify { "extracting the runner": }
       # Extract the runner
       ->exec { 'extract the github actions runner':
         command => "tar xzf ${::github_runner::runner_dir}/actions-runner-linux-x64-${::github_runner::runner_version}.tar.gz -C ${::github_runner::runner_dir}",
