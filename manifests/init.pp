@@ -7,7 +7,7 @@
 class github_runner(
   String $ensure = 'present',
   Array[String] $path = ['/usr/local/sbin','/usr/local/bin','/usr/sbin','/usr/bin','/sbin','/bin'],
-  String $runner_user,
+  String $runner_user = 'intel',
   String $runner_url,
   String $runner_token,
   String $runner_dir = '/opt/actions-runner',
